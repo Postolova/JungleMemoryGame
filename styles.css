@@ -1,0 +1,156 @@
+/* My colors:
+dark-green #004c37;
+orange #ea913e;
+light-brown: #a94b0d;
+brown: #671f01;
+*/
+
+/* My fonts:
+GAME NAME
+font-family: 'Rammetto One', cursive;
+
+OTHER HEADINGS and SCORES
+font-family: 'Love Ya Like A Sister', cursive;
+
+OTHER TEXT
+font-family: 'Ubuntu', sans-serif;
+ */
+
+@import url(https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Rammetto+One|Ubuntu);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 17px;
+  height: 100%;
+  background: #fff3d6;
+  background-size: cover;
+  background: linear-gradient(to bottom, #fff3d6 0%, #c1f5f7 47%, #f0be73 66%, #fbdf93 100%) center center fixed no-repeat;
+}
+
+h1 {
+  font-size: 2em;
+  color: #a94b0d;
+  text-shadow: 2.5px 0px 0px rgba(103, 31, 1, 1);
+  font-family: 'Rammetto One', cursive;
+}
+
+h2 {
+  font-size: 1.4em;
+  color: #ea913e;
+  font-family: 'Love Ya Like A Sister', cursive;
+  letter-spacing: 0.26em;
+  padding-left: 0.4em;
+}
+
+h1,
+h2 {
+  line-height: 1;
+  font-weight: normal;
+  text-align: center;
+}
+
+p,
+a {
+  font-size: 0.875em;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* General classes */
+.margin-top {
+  margin-top: 5%;
+}
+
+.cards-background {
+  margin: 0 auto;
+  max-width: 400px;
+  min-width: 320px;
+  min-height: 500px;
+  height: 100%;
+  background: url(images/bamboo-320.svg) no-repeat center center;
+  background-size: contain;
+}
+
+.cards-container{
+  display: flex;
+  flex-flow: row;
+  padding: 67px 85px;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-flow: column;
+}
+
+.button {
+  width: 80px;
+  height: 40px;
+  background: #ffac46;
+  border-radius: 5px;
+  margin: 3px;
+  background: linear-gradient(45deg, rgb(234, 145, 62) 0%, rgb(255, 185, 98) 100%);
+  box-shadow: 0px 3px 0px rgba(227, 101, 35, 1);
+}
+
+.button:hover {
+  background: linear-gradient(45deg, rgb(198, 100, 9) 0%, rgb(239, 146, 9) 100%);
+  box-shadow: 0px 3px 0px rgb(112, 49, 16);
+}
+
+.button:active {
+  background: linear-gradient(45deg, rgb(198, 100, 9) 0%, rgb(239, 146, 9) 100%);
+  box-shadow: 0px 3px 0px rgb(112, 49, 16);
+  transform: translateY(2px);
+}
+
+.button img {
+  padding: 3px;
+  max-height: 40px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  padding: 10px;
+}
+
+.footer p,
+.footer a {
+  color: #671f01;
+  font-size: 0.5em;
+}
+
+.footer img {
+  width: 100px;
+}
+
+/* first break-point */
+@media screen and (min-width: 420px) {
+  .cards-background {
+    margin: 0 auto;
+    max-width: 400px;
+    min-width: 320px;
+    min-height: 500px;
+    height: 100%;
+    background: url(images/bamboo-420.svg) no-repeat center center;
+    background-size: contain;
+  }
+}
