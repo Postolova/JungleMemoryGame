@@ -43,7 +43,7 @@ h1 {
 
 h2,
 .star {
-  font-size: 1.4em;
+  font-size: 1.6em;
   color: #ea913e;
   letter-spacing: 0.26em;
   padding-left: 0.4em;
@@ -88,9 +88,6 @@ a {
   display: none;
 }
 
-.box {
-}
-
 .heading {
   grid-column: 2 / span 1;
   padding-top: 4%;
@@ -102,6 +99,11 @@ a {
   flex-direction: row;
   align-content: center;
   justify-content: center;
+}
+
+.time h2,
+.time i {
+  font-size: 1em;
 }
 
 .bamboo {
@@ -141,13 +143,13 @@ a {
   transform: translateY(2px);
 }
 
-.button img {
-  padding: 1px;
+.button_image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 34px;
   width: auto;
-  height: 38px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 2px;
 }
 
 .footer {
@@ -177,7 +179,7 @@ a {
 /* first break-point */
 @media screen and (min-width: 470px) {
   body {
-  font-size: 20px;
+    font-size: 20px;
   }
 
   .grid {
@@ -207,9 +209,8 @@ a {
     transform: translateY(3px);
   }
 
-  .button img {
-    padding: 2px;
-    height: 50px;
+  .button_image {
+    height: 46px;
   }
 
   .bottom-floral {
@@ -242,7 +243,7 @@ a {
 /* second break-point 750px */
 @media screen and (min-width: 750px) {
   body {
-  font-size: 22px;
+    font-size: 22px;
   }
 
   .grid {
@@ -276,9 +277,9 @@ a {
     transform: translateY(5px);
   }
 
-  .button img {
-    padding: 2px;
-    height: 65px;
+  .button_image {
+    height: 57px;
+    margin-top: 4px;
   }
 }
 /* third break-point 1040px */
@@ -333,9 +334,9 @@ a {
     transform: translateY(5px);
   }
 
-  .button img {
-    padding: 10px;
-    height: 90px;
+  .button_image {
+    height: 70px;
+    margin-top: 10px;
   }
 
   .bottom-floral {
@@ -348,7 +349,7 @@ a {
     grid-row: 1 / span 3;
   }
 
-    .left-floral {
+  .left-floral {
     grid-row: 1 / span 3;
   }
 
