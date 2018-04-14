@@ -131,25 +131,26 @@ a {
   margin: 2px;
   background: linear-gradient(45deg, rgb(234, 145, 62) 0%, rgb(255, 185, 98) 100%);
   box-shadow: 0px 5px 0px rgba(227, 101, 35, 1);
+  transition: all 0.3s linear;
+  transform-style: preserve-3d;
 }
 
-.button:hover {
-  background: linear-gradient(45deg, rgb(198, 100, 9) 0%, rgb(239, 146, 9) 100%);
-}
 
-.button:active {
+/* .button:active {
   background: linear-gradient(45deg, rgb(198, 100, 9) 0%, rgb(239, 146, 9) 100%);
   box-shadow: 0px 3px 0px rgb(112, 49, 16);
   transform: translateY(2px);
-}
+} */
 
 .button_image {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 34px;
-  width: auto;
-  margin-top: 2px;
+  height: inherit;
+  width: inherit;
+  position: absolute;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
 }
 
 .footer {
@@ -174,6 +175,29 @@ a {
   width: 200%;
   height: 28%;
   z-index: 1;
+}
+
+.front {
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(45deg, rgb(234, 145, 62) 0%, rgb(255, 185, 98) 100%);
+  border-radius: 5px;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: lineral 0.3s ease;
+}
+
+.front:hover {
+  background: linear-gradient(45deg, rgb(198, 100, 9) 0%, rgb(239, 146, 9) 100%);
+  box-shadow: 0px 5px 0px rgb(112, 49, 16);
+}
+
+.selected {
+  transform: rotateY(180deg);
+}
+
+.match {
+  transform: rotateY(180deg);
 }
 
 /* first break-point */
@@ -204,14 +228,10 @@ a {
     box-shadow: 0px 7px 0px rgba(227, 101, 35, 1);
   }
 
-  .button:active {
+  /* .button:active {
     box-shadow: 0px 4px 0px rgb(112, 49, 16);
     transform: translateY(3px);
-  }
-
-  .button_image {
-    height: 46px;
-  }
+  } */
 
   .bottom-floral {
     left: -30%;
@@ -272,16 +292,16 @@ a {
     box-shadow: 0px 10px 0px rgba(227, 101, 35, 1);
   }
 
-  .button:active {
-    box-shadow: 0px 5px 0px rgb(112, 49, 16);
-    transform: translateY(5px);
+  .front:hover {
+    box-shadow: 0px 10px 0px rgb(112, 49, 16);
   }
 
-  .button_image {
-    height: 57px;
-    margin-top: 4px;
-  }
+  /* .button:active {
+    box-shadow: 0px 5px 0px rgb(112, 49, 16);
+    transform: translateY(5px);
+  } */
 }
+
 /* third break-point 1040px */
 @media screen and (min-width: 1040px) {
   body {
@@ -326,18 +346,12 @@ a {
   .button {
     height: 90px;
     width: 95px;
-    box-shadow: 0px 10px 0px rgba(227, 101, 35, 1);
   }
 
-  .button:active {
+  /* .button:active {
     box-shadow: 0px 5px 0px rgb(112, 49, 16);
     transform: translateY(5px);
-  }
-
-  .button_image {
-    height: 70px;
-    margin-top: 10px;
-  }
+  } */
 
   .bottom-floral {
     left: -5%;
