@@ -81,7 +81,7 @@ a {
 
 .cursor,
 .cursor-fixed {
-  cursor: default;
+  cursor: default !important;
 }
 
 .uppercase {
