@@ -1,4 +1,4 @@
-// Array with objects, containing images for memmory game
+// Array with objects, containing images
 const buttonsArray = [
   {
     name: 'hand',
@@ -34,66 +34,134 @@ const buttonsArray = [
   }
 ];
 
-// Dublicates buttonsArray and makes one full viariable with 8 pairs of buttons
-let fullButtonsArray = buttonsArray.concat(buttonsArray);
+// Id "game" is targeted in HTML, that's the place where the game will be created
+const game = document.getElementById('game');
+// Section with cards class is added
+const cards = document.createElement('section');
+cards.setAttribute('class', 'cards');
+game.appendChild(cards);
 
-// My variables
+//@description: Function starting the game
+document.body.onload = gameStart();
+
+function gameStart() {
+  // Dublicates buttonsArray and makes one full viariable with 8 pairs of buttons
+  let fullButtonsArray = buttonsArray.concat(buttonsArray);
+
+  // Shuffles the created array
+  fullButtonsArray.sort(() => 0.5 - Math.random());
+
+  // Loopes over array and adds divs with classes "button", "front" and "button_image"
+  fullButtonsArray.forEach(item => {
+    //div with class button and data-name
+    const button = document.createElement('div');
+    button.classList.add('button');
+    button.dataset.name = item.name;
+
+    //div with class front
+    const front = document.createElement('div');
+    front.classList.add('front')
+
+    //div with class button_image containing images
+    const buttonImage = document.createElement('div');
+    buttonImage.classList.add('button_image');
+    buttonImage.style.backgroundImage = `url(${item.img})`;
+
+    //appends created divs in the right order
+    cards.appendChild(button);
+    button.appendChild(front);
+    button.appendChild(buttonImage);
+  });
+}
+
+// variables for score icons (stars)
+const starOne = document.getElementById('starOne');
+const starTwo = document.getElementById('starTwo');
+let movesNumber = 0;
+let moves = document.querySelector('.moves');
+
+//@description: counts moves, starts timer and applies stars-rate
+function moveCounter(){
+    movesNumber++;
+    moves.innerHTML = movesNumber;
+    //if it is the first move - start timer
+    if(movesNumber === 1){
+        second = 0;
+        minute = 0;
+        hour = 0;
+        startTimer();
+    }
+    //three stars for 8 and less moves, two for 9-16, one for 17 and more
+    if (movesNumber > 9 && movesNumber < 16){
+        starOne.style.opacity = '0';
+    }
+    else if (movesNumber > 17){
+        starTwo.style.opacity = '0';
+    }
+}
+
+//variables needed for timer
+let second = 0;
+let minute = 0;
+let hour = 0;
+let timer = document.querySelector('.timer');
+let interval;
+
+//@description: adds timer
+function startTimer(){
+    interval = setInterval(() => {
+        timer.innerHTML = `${hour}:${minute}:${second}`;
+        second++;
+
+        if(second == 60){
+            minute++;
+            second = 0;
+        }
+
+        if(minute == 60){
+            hour++;
+            minute = 0;
+        }
+    },1000);
+}
+
+//variables needed for the event listener
 let clicksCount = 0;
 let firstGuess = '';
 let secondGuess = '';
 let previousButton = null;
-let delay = 1000;
+let correctMatch = 0;
+const modal = document.getElementById('modal');
 
-// Id "game" is targeted in HTML, that's the place where the game will be created
-const game = document.getElementById('game');
-const cards = document.createElement('section'); // Section with cards (class="cards") is added
-cards.setAttribute('class', 'cards');
-game.appendChild(cards);
-
-//My functions
-// @description: Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-    return array;
-}
-
-fullButtonsArray = shuffle(fullButtonsArray); // Runs shuffle function for the created array
-
-/*@description: in order to add pictures in divs to the created section
-of cards the code loopes over each item in fullButtonsArray array*/
-fullButtonsArray.forEach(item => {
-  const button = document.createElement('div');   // Creates a div
-  button.classList.add('button'); // Applies a button class to the created div
-  button.dataset.name = item.name; //Applies data-name to the created div
-
-  const front = document.createElement('div'); // Creates div with class front
-  front.classList.add('front')
-
-  const buttonImage = document.createElement('div'); // Creates next div
-  buttonImage.classList.add('button_image'); // Applies button_image class to the created div
-  buttonImage.style.backgroundImage = `url(${item.img})`; // Adds the background-image to the second div
-
-  cards.appendChild(button); // Appends the <div class="button"></div> to the <div class="cards"></div>
-  button.appendChild(front);
-  button.appendChild(buttonImage); // Appends the <div class="button_image"></div> to the <div class="button"></div>
-});
-
-/*@description: adds class "match" to the div with class "selected"*/
+//@description: adds match class to the matching cards, counts correct matches, once there are 8 matches makes modal visible
 const match = () => {
+  correctMatch ++;
+  console.log(correctMatch);
+  if (correctMatch === 2) {
+    clearInterval(interval);
+    finalTime = timer.innerHTML;
+    modal.classList.add('visible');
+
+    const modalStarTwo = document.getElementById('modalStarTwo');
+    const modalStarThree = document.getElementById('modalStarThree');
+
+    if (movesNumber > 9 && movesNumber < 16) {
+        modalStarTwo.style.opacity = '0';
+    }
+    else if (movesNumber > 17) {
+        modalStarThree.style.opacity = '0';
+    }
+    document.getElementById("finalMove").innerHTML = movesNumber;
+    document.getElementById("totalTime").innerHTML = finalTime;
+  }
+
   const selected = document.querySelectorAll('.selected');
   selected.forEach(button => {
     button.classList.add('match');
   });
 };
 
+//@description: removes selected class from the incorrect buttons
 const resetGuesses = () => {
   firstGuess = '';
   secondGuess = '';
@@ -107,11 +175,10 @@ const resetGuesses = () => {
 };
 
 /*@description: event listener is applied for the whole game section to wait
-for clicks, assign selected classes and look for matches*/
+for clicks, assign selected classes and matches*/
 game.addEventListener('click', event => {
-
   const clicked = event.target;
-
+  //it will not count clicks on <section>, on already selected or buttons with match
   if (
     clicked.nodeName === 'SECTION' ||
     clicked === previousButton ||
@@ -123,23 +190,50 @@ game.addEventListener('click', event => {
 
   if (clicksCount < 2) {
     clicksCount++;
+    //if one button is open, class selected is assigned
     if (clicksCount === 1) {
       firstGuess = clicked.parentNode.dataset.name;
       console.log(firstGuess);
       clicked.parentNode.classList.add('selected');
+      //if two buttons are open class selected is assigned and one move is counted
     } else {
       secondGuess = clicked.parentNode.dataset.name;
       console.log(secondGuess);
       clicked.parentNode.classList.add('selected');
+      moveCounter();
     }
 
+    //if two selected buttons match, match class is applied, otherwise the guess is reset
     if (firstGuess && secondGuess) {
       if (firstGuess === secondGuess) {
-        setTimeout(match, delay);
+        setTimeout(match, 1000);
       }
-      setTimeout(resetGuesses, delay);
+      setTimeout(resetGuesses, 1000);
     }
     previousButton = clicked;
   }
-
 });
+
+//@description: resets the game
+function resetAll() {
+  correctMatch = 0;
+  firstGuess = '';
+  secondGuess = '';
+  clicksCount = 0;
+  previousButton = null;
+  starOne.style.opacity = '1';
+  starTwo.style.opacity = '1';
+  movesNumber = 0;
+  moves.innerHTML = movesNumber;
+  second = 0;
+  minute = 0;
+  hour = 0;
+  timer.innerHTML = `${hour}:${minute}:${second}`;
+  cards.innerHTML = "";
+  gameStart();
+};
+
+function closeModal(){
+    modal.classList.remove('visible');
+    resetAll();
+}
