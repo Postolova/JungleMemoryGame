@@ -2,35 +2,35 @@
 const buttonsArray = [
   {
     name: 'hand',
-    img: 'images/cards/1.png',
+    img: 'images/cards/1.svg',
   },
   {
     name: 'turtle',
-    img: 'images/cards/2.png',
+    img: 'images/cards/2.svg',
   },
   {
     name: 'drum',
-    img: 'images/cards/3.png',
+    img: 'images/cards/3.svg',
   },
   {
     name: 'arrow',
-    img: 'images/cards/4.png',
+    img: 'images/cards/4.svg',
   },
   {
     name: 'bird',
-    img: 'images/cards/5.png',
+    img: 'images/cards/5.svg',
   },
   {
     name: 'circle',
-    img: 'images/cards/6.png',
+    img: 'images/cards/6.svg',
   },
   {
     name: 'lizard',
-    img: 'images/cards/7.png',
+    img: 'images/cards/7.svg',
   },
   {
     name: 'eagle',
-    img: 'images/cards/8.png',
+    img: 'images/cards/8.svg',
   }
 ];
 
