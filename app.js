@@ -77,6 +77,8 @@ function gameStart() {
 // variables for score icons (stars)
 const starOne = document.getElementById('starOne');
 const starTwo = document.getElementById('starTwo');
+
+//variables for moves counter function
 let movesNumber = 0;
 let moves = document.querySelector('.moves');
 
@@ -84,6 +86,7 @@ let moves = document.querySelector('.moves');
 function moveCounter(){
     movesNumber++;
     moves.innerHTML = movesNumber;
+
     //if it is the first move - start timer
     if(movesNumber === 1){
         second = 0;
@@ -91,6 +94,7 @@ function moveCounter(){
         hour = 0;
         startTimer();
     }
+
     //three stars for 8 and less moves, two for 9-16, one for 17 and more
     if (movesNumber > 9 && movesNumber < 16){
         starOne.style.opacity = '0';
@@ -125,7 +129,7 @@ function startTimer(){
     },1000);
 }
 
-//variables needed for the event listener
+//variables needed for the event listener (for clicks count)
 let clicksCount = 0;
 let firstGuess = '';
 let secondGuess = '';
@@ -137,27 +141,35 @@ const modal = document.getElementById('modal');
 const match = () => {
   correctMatch ++;
   console.log(correctMatch);
-  if (correctMatch === 2) {
+  if (correctMatch === 8) {
     clearInterval(interval);
     finalTime = timer.innerHTML;
     modal.classList.add('visible');
 
     const modalStarTwo = document.getElementById('modalStarTwo');
-    const modalStarThree = document.getElementById('modalStarThree');
+    const modalStarOne = document.getElementById('modalStarOne');
 
     if (movesNumber > 9 && movesNumber < 16) {
-        modalStarTwo.style.opacity = '0';
+        modalStarOne.style.opacity = '0';
     }
     else if (movesNumber > 17) {
-        modalStarThree.style.opacity = '0';
+        modalStarTwo.style.opacity = '0';
+        modalStarOne.style.opacity = '0';
     }
-    document.getElementById("finalMove").innerHTML = movesNumber;
-    document.getElementById("totalTime").innerHTML = finalTime;
+    document.getElementById('finalMove').innerHTML = movesNumber;
+    document.getElementById('totalTime').innerHTML = finalTime;
   }
 
+  //applies match class to the button
   const selected = document.querySelectorAll('.selected');
   selected.forEach(button => {
     button.classList.add('match');
+  });
+
+  //applies cursor-fixed class to the front
+  const cursorFixed = document.querySelectorAll('.cursor');
+  cursorFixed.forEach(button => {
+    button.classList.add('cursor-fixed')
   });
 };
 
@@ -171,6 +183,10 @@ const resetGuesses = () => {
   const selected = document.querySelectorAll('.selected');
   selected.forEach(button => {
     button.classList.remove('selected');
+  });
+  const cursor = document.querySelectorAll('.cursor');
+  cursor.forEach(button => {
+    button.classList.remove('cursor');
   });
 };
 
@@ -195,11 +211,13 @@ game.addEventListener('click', event => {
       firstGuess = clicked.parentNode.dataset.name;
       console.log(firstGuess);
       clicked.parentNode.classList.add('selected');
-      //if two buttons are open class selected is assigned and one move is counted
+      clicked.classList.add('cursor');
+    //if two buttons are open class selected is assigned and one move is counted
     } else {
       secondGuess = clicked.parentNode.dataset.name;
       console.log(secondGuess);
       clicked.parentNode.classList.add('selected');
+      clicked.classList.add('cursor');
       moveCounter();
     }
 
@@ -214,7 +232,7 @@ game.addEventListener('click', event => {
   }
 });
 
-//@description: resets the game
+//@description: cleares everything and resets the game
 function resetAll() {
   correctMatch = 0;
   firstGuess = '';
@@ -233,6 +251,7 @@ function resetAll() {
   gameStart();
 };
 
+//@description: at the end of the game, closes the modal and resets the game
 function closeModal(){
     modal.classList.remove('visible');
     resetAll();

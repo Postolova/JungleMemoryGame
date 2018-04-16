@@ -46,22 +46,6 @@ h2 {
   color: #ea913e;
   letter-spacing: 0.26em;
   padding-left: 0.4em;
-}
-
-#starThree,
-#starOne,
-#starTwo,
-#refresh {
-  font-size: 1em;
-  padding-left: 0.4em;
-  color: #ea8f28;
-}
-
-#refresh {
-  cursor: pointer;
-}
-
-h2 {
   font-family: 'Love Ya Like A Sister', cursive;
 }
 
@@ -82,6 +66,24 @@ a {
   text-decoration: none;
 }
 
+#starThree,
+#starOne,
+#starTwo,
+#refresh {
+  font-size: 1em;
+  padding-left: 0.4em;
+  color: #ea8f28;
+}
+
+#refresh {
+  cursor: pointer;
+}
+
+.cursor,
+.cursor-fixed {
+  cursor: default;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
@@ -93,11 +95,6 @@ a {
   grid-template: 10% 10% 70% 10% / 1fr 310px 1fr;
   z-index: 25;
   position: relative;
-}
-
-.left-floral,
-.righ-floral {
-  display: none;
 }
 
 .heading {
@@ -138,7 +135,6 @@ a {
   justify-self: center;
   height: 38px;
   width: 75px;
-  background: #ffac46;
   border-radius: 5px;
   margin: 2px;
   background: linear-gradient(45deg, rgb(234, 145, 62) 0%, rgb(255, 185, 98) 100%);
@@ -147,14 +143,30 @@ a {
   transform-style: preserve-3d;
 }
 
+.front {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgb(234, 145, 62) 0%, rgb(255, 185, 98) 100%);
+  border-radius: 5px;
+  position: absolute;
+  cursor: pointer;
+}
+
 .button_image {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  height: inherit;
-  width: inherit;
+  height: 100%;
+  width: 100%;
   position: absolute;
   backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border-radius: 5px;
+  cursor: default;
+}
+
+.selected,
+.match {
   transform: rotateY(180deg);
 }
 
@@ -173,6 +185,11 @@ a {
   font-size: 0.8em;
 }
 
+.left-floral,
+.righ-floral {
+  display: none;
+}
+
 .bottom-floral {
   position: fixed;
   bottom: -10%;
@@ -182,29 +199,7 @@ a {
   z-index: 1;
 }
 
-.front {
-  width: inherit;
-  height: inherit;
-  background: linear-gradient(45deg, rgb(234, 145, 62) 0%, rgb(255, 185, 98) 100%);
-  border-radius: 5px;
-  position: absolute;
-  backface-visibility: hidden;
-  transition: lineral 0.3s ease;
-}
-
-.front:hover {
-  background: linear-gradient(45deg, rgb(198, 100, 9) 0%, rgb(239, 146, 9) 100%);
-  box-shadow: 0px 5px 0px rgb(112, 49, 16);
-}
-
-.selected {
-  transform: rotateY(180deg);
-}
-
-.match {
-  transform: rotateY(180deg);
-}
-
+/* Pop-up modal section */
 .modal {
   position: fixed;
   top: 0;
@@ -348,7 +343,7 @@ a {
     grid-row: 3 / span 2;
   }
 
-    .left-floral {
+  .left-floral {
     background: url(images/left-floral.svg) no-repeat right;
     background-size: cover;
     grid-column: 1 / span 1;
@@ -386,10 +381,6 @@ a {
     height: 65px;
     width: 150px;
     box-shadow: 0px 10px 0px rgba(227, 101, 35, 1);
-  }
-
-  .front:hover {
-    box-shadow: 0px 10px 0px rgb(112, 49, 16);
   }
 
   .message-section {
