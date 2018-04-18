@@ -157,10 +157,11 @@ a {
   background-repeat: no-repeat;
   background-position: center center;
   background-color: transparent;
-    -ms-background-size: cover;
+    -ms-background-size: contain;
     -o-background-size: contain;
     -moz-background-size: contain;
     -webkit-background-size: contain;
+  background-width: 100% auto;
   height: 38px;
   width: 100%;
   position: absolute;
