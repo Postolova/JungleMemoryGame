@@ -156,6 +156,10 @@ a {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
+  background-attachment: fixed;
+    -o-background-size: contain;
+    -moz-background-size: contain;
+    -webkit-background-size: contain;
   height: 38px;
   width: 100%;
   position: absolute;
