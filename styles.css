@@ -156,7 +156,8 @@ a {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  background-attachment: fixed;
+  background-color: transparent;
+    -ms-background-size: cover;
     -o-background-size: contain;
     -moz-background-size: contain;
     -webkit-background-size: contain;
