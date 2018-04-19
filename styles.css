@@ -142,6 +142,9 @@ a {
   transition: all 0.3s linear;
   transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 0;
+    -webkit-transform: translate3d(0,0,0);
 }
 
 .front {
