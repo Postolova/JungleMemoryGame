@@ -151,10 +151,10 @@ a {
   position: absolute;
   cursor: pointer;
   backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 }
 
 .button_image {
-  background-color: orange !important;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -164,7 +164,12 @@ a {
   width: 100%;
   position: absolute;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
   border-radius: 5px;
   cursor: default;
 }
@@ -172,6 +177,10 @@ a {
 .selected,
 .match {
   transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
 }
 
 .footer {
