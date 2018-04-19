@@ -65,7 +65,7 @@ function gameStart() {
     //div with class button_image containing images
     const buttonImage = document.createElement('div');
     buttonImage.classList.add('button_image');
-    buttonImage.style.backgroundImage = `url(${item.img})`;
+    buttonImage.style.backgroundImage = "url(" + item.img + ")";
 
     //appends created divs in the right order
     cards.appendChild(button);
