@@ -140,11 +140,7 @@ a {
   background: linear-gradient(45deg, rgb(234, 145, 62) 0%, rgb(255, 185, 98) 100%);
   box-shadow: 0px 5px 0px rgba(227, 101, 35, 1);
   transition: all 0.3s linear;
-    -webkit-transition: all 0.3s linear;
-    -o-transition: all 0.3s linear;
   transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
 }
 
 .front {
@@ -154,27 +150,21 @@ a {
   border-radius: 5px;
   position: absolute;
   cursor: pointer;
-    -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
 .button_image {
+  background-color: orange !important;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
   background-color: transparent;
-    -ms-background-size: contain;
-    -o-background-size: contain;
-    -moz-background-size: contain;
-    -webkit-background-size: contain;
   background-width: 100% auto;
   height: 38px;
   width: 100%;
   position: absolute;
   backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
   transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
   border-radius: 5px;
   cursor: default;
 }
@@ -182,7 +172,6 @@ a {
 .selected,
 .match {
   transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
 }
 
 .footer {
