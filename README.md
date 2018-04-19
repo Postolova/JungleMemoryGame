@@ -13,7 +13,7 @@ A player should find a match to the card by flipping one by one cards to reveal 
 If the cards do not match, both cards are flipped face down.
 
 ## Game preview
-![Game preview](https://image.ibb.co/hSdAXS/C_Users_usjul_Documents_Codes_PORTFOLIO_3_memory_game_Copy_Copy_index_html.png)
+![Game preview](https://image.ibb.co/ftPfNS/usjulija_github_io_Jungle_Memory_Game_Laptop_with_Hi_DPI_screen.png)
 
 ## Acknowledgments
 The visual were designed by [freepic](https://www.freepik.com/)
