@@ -152,6 +152,7 @@ a {
   cursor: pointer;
   backface-visibility: hidden;
 	-webkit-backface-visibility: hidden;
+  z-index: 100;
 }
 
 .button_image {
